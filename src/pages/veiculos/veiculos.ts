@@ -1,5 +1,8 @@
+import { VeiculoDTO } from './../../models/veiculo.dto';
+import { VeiculoService } from './../../services/domain/veiculo.service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
 
 /**
  * Generated class for the VeiculosPage page.
@@ -14,12 +17,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'veiculos.html',
 })
 export class VeiculosPage {
+  items: VeiculoDTO[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+     public navParams: NavParams,
+     public veiculoService : VeiculoService) {
+  
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad VeiculosPage');
+    this.veiculoService.findAll()
+    .subscribe(response =>{
+     
+      this.items=response;
+      this.listarVeiculos(response);
+    });
+   
+    error => {
+      console.log(error);
+
+    };
+   
+  }
+  private listarVeiculos(response){
+    console.log(response);
   }
 
 }
