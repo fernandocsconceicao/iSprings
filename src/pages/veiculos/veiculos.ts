@@ -34,7 +34,7 @@ export class VeiculosPage {
     });
    
     error => {
-      console.log(error);
+     
 
     };
    

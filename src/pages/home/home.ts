@@ -11,8 +11,8 @@ export class HomePage {
   constructor(public navCtrl: NavController, public menu : MenuController) {
 
   }
-  login(  ){
-    this.navCtrl.setRoot("VeiculosPage")
+  pageMenu(){
+    this.navCtrl.setRoot("MenuPage")
 
   }
   ionViewWillEnter(){

@@ -1,3 +1,4 @@
+import { ErrorInterceptorProvider } from './../../interceptors/error.interceptor';
 import { VeiculoService } from './../services/domain/veiculo.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -26,6 +27,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     
   ],
   providers: [
+    ErrorInterceptorProvider,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
