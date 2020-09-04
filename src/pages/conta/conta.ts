@@ -14,12 +14,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'conta.html',
 })
 export class ContaPage {
+  notificacoes 
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContaPage');
+  }
+  salvarConfiguracoes(){
+    
   }
 
 }

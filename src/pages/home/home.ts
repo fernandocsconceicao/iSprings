@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Component } from '@angular/core';
 import { NavController, IonicPage, MenuController } from 'ionic-angular';
 import { CredenciaisDTO } from '../../models/credenciais.dto';
@@ -12,11 +13,11 @@ export class HomePage {
       email: "",
       senha: ""
     }
-  constructor(public navCtrl: NavController, public menu : MenuController) {
+  constructor(public navCtrl: NavController, public menu : MenuController, public auth: AuthService) {
 
   }
   pageMenu(){
-    console.log(this.creds)
+    
     this.navCtrl.setRoot("MenuPage")
 
   }
@@ -28,6 +29,18 @@ export class HomePage {
   ionViewDidLeave(){
     this.menu.swipeEnable(true);
    
+  }
+  login(){
+    this.auth.authenticate(this.creds)
+    .subscribe(response =>{
+      this.auth.succesfulLogin(response.headers.get('Authorization'));
+    this.pageMenu();
+  }
+    ,
+    error=>{});
+    
+    
+
   }
 
 }
